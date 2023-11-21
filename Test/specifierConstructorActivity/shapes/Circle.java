@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Circle {
     private float radius;
-    static float pi = 3.15f;
+    private float pi = 3.15f;
 
     public Circle(){
         this.radius = 1.5f;
@@ -12,28 +12,29 @@ public class Circle {
 
     Circle(float radius){
         this(radius,3.15f);
-        this.radius = radius;
     }
 
     private Circle(float radius, float pi){
-        Circle.pi = pi;
+        this.pi = pi;
         this.radius = radius;
     }
 
-    private static float calculateCircleArea(float radius){
-        return pi*radius*radius;
+    private float calculateCircleArea(){
+        return this.pi*this.radius*this.radius;
     }
 
-    private static float calculateCircleCircumference(float radius){
-        return 2*pi*radius;
+    private float calculateCircleCircumference(float radius){
+        return 2*this.pi*radius;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the Circle radius: ");
         float radius = sc.nextFloat();
-        System.out.println("Circle Area: "+calculateCircleArea(radius));
-        System.out.println("Circle Circumference: "+calculateCircleCircumference(radius));
+        Circle circle = new Circle(radius);
+        System.out.println("Circle Area: "+circle.calculateCircleArea());
+        System.out.println("Circle Circumference: "+circle.calculateCircleCircumference(radius));
     }
 
 }
+
